@@ -16,27 +16,49 @@ int main(){
     cout << "Enter the point C: " << endl;
     cin >> t.C.x >> t.C.y;
 
+    if(fabs(t.area()) < 1e-9 && fabs(cross(t.A, t.B, t.C)) < 1e-9){
+        cout << "Triangle is degenerate" << endl;
+        return 0;
+    } 
+    else cout << "Triangle is not degenerate" << endl;
+
     cout << "Enter the number of points: " << endl;
     cin >> n;
-
-    if(fabs(t.area()) < 1e-9 && fabs(cross(t.A, t.B, t.C)) < 1e-9){
-        cout << "Triangle is degenerate (points are on one line)" << endl;
-        return 0;
-    }
 
     for(int i = 0; i < n; i++){
         Points p;
         cout << "Enter point " << i + 1 << ": " << endl;
-        cin >> p.x >> p.y;
+        cin >> p.x >> p.y; 
+
+         int r1 = t.contains1(p);
+
+        switch (r1)
+        {
+            case 1:
+                cout << "Method 1: inside" << endl;
+                break;
+            case 0:
+                cout << "Method 1: on border" << endl;
+                break;
+            case -1:
+                cout << "Method 1: outside" << endl;
+                break;
+        }
 
         int r = t.contains2(p);
 
         switch (r)
         {
-        case 1: cout << "Point inside triangle" << endl; break;
-        case 0: cout << "Point on border" << endl; break;
-        case -1: cout << "Point outside triangle" << endl; break;
-        }
+            case 1: 
+                cout << "Method 2: inside" << endl;
+                break;
+            case 0: 
+                cout << "Method 2: on border" << endl;
+                break;
+            case -1: 
+                cout << "Method 2: outside" << endl; 
+                break;
+        } 
     }
 
     return 0;

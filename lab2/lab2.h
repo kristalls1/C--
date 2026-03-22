@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+const double EPS = 1e-6;
  struct Points{
     double x, y;
  };
@@ -7,7 +8,7 @@
     Points A, B, C;
     double area() const;
 
-    bool contains1(const Points &P) const;
+    int contains1(const Points &P) const;
     int contains2(const Points &P) const;
  };
  double distance(const Points &p1, const Points &p2);
