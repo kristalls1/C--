@@ -13,6 +13,7 @@ private:
 public:
     void SetBrand(string b);
     void SetPrice(double p);
+    void SetPrice(int y);
     void SetYear(int y);
 
     void ShowInfo();

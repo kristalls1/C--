@@ -15,6 +15,10 @@ void Device::SetYear(int y)
     year = y;
 }
 
+void Device::SetPrice(int y){
+    price = y;
+}
+
 void Device::ShowInfo()
 {
     cout << "Brand: " << brand << endl;
