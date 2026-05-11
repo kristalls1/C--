@@ -13,7 +13,18 @@ void Math::setEPS(double E){
     eps = E;
 }
 
-double Math::dichotomy(function<double(double)>f){
+Math::Math(){
+    f =[](double x){
+        return 3 * sin(sqrt(x)) + 0.35 * x - 3.8;
+    };
+
+    df =[](double x){
+         return (3 * cos(sqrt(x))) / (2 * sqrt(x)) + 0.35;
+    };
+}
+
+
+double Math::dichotomy(){
     double first = f(a)*f(b);
     if(first > 0) {
         return NAN;
@@ -30,7 +41,7 @@ double Math::dichotomy(function<double(double)>f){
     return x;
 }
 
-double Math::newton(function<double(double)>f, function<double(double)>df){
+double Math::newton(){
     double x = (a + b)/2;
     while(fabs(f(x)) >= eps){
     if(fabs(df(x)) == 0) return NAN;
